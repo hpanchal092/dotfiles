@@ -1,0 +1,24 @@
+[user]
+    name = Harsh Panchal
+    email = hpanchal092@gmail.com
+[core]
+    editor = nvim
+
+[difftool]
+    prompt = true
+[diff]
+    tool = nvimdiff
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+
+[merge]
+    tool = nvimmerge
+[mergetool]
+    keepBackup = false
+[mergetool "nvimmerge"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\" \"$MERGED\""
+
+[alias]
+    df = diff
+    dt = difftool
+    s = status

@@ -1,0 +1,3 @@
+# Get rid of what I presume to be cached content for nvim config
+.netrwhist
+

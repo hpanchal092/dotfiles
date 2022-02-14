@@ -1,0 +1,12 @@
+Host *
+    AddKeysToAgent yes
+    IdentityFile ~/.ssh/id_ed25519
+
+Host gwubbserver
+    HostName zonda-f.emetic.org
+    User harshpanchal
+
+Host enoch
+    HostName 45.63.50.198
+    User developer
+    IdentityFile ~/.ssh/dev_file.pem
