@@ -1,6 +1,18 @@
 return require('packer').startup(function()
     use 'wbthomason/packer.nvim'
 
+    -- see config at lsp.lua
+    use 'neovim/nvim-lspconfig'
+    use 'williamboman/nvim-lsp-installer'
+
+    -- see config at autocomplete.lua
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-vsnip'
+    use 'hrsh7th/vim-vsnip'
+
     use {
         'tpope/vim-commentary',
         config = function()
@@ -67,16 +79,4 @@ return require('packer').startup(function()
             }
         end
     }
-
-    -- see config at lsp.lua
-    use 'neovim/nvim-lspconfig'
-    use 'williamboman/nvim-lsp-installer'
-
-    -- see config at autocomplete.lua
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-path'
-    use 'hrsh7th/nvim-cmp'
-    use 'hrsh7th/cmp-vsnip'
-    use 'hrsh7th/vim-vsnip'
 end)
