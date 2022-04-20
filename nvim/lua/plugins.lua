@@ -42,7 +42,8 @@ return require('packer').startup(function()
             require('lualine').setup {
                 options = {
                     theme = 'onedark',
-                    icons_enabled = false
+                    icons_enabled = false,
+                    globalstatus = true,
                 }
             }
         end

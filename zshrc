@@ -60,6 +60,10 @@ TRAPINT() {
 
 PROMPT='$THEME_VI_MODE_SYMBOL %{$fg[green]%}%n@%m%{$reset_color%}:%{$fg[blue]%}%~%{$reset_color%}$ '
 
+# Add openjdk to the path variable
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+
+
 # Load zsh-autosuggestions
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Load zsh-syntax-highlighting
