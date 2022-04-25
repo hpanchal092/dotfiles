@@ -34,17 +34,6 @@ local enhance_server_opts = {
             },
         }
     end,
-    ["pyright"] = function(opts)
-        opts.settings = {
-            python = {
-                analysis = {
-                    typeCheckingMode = "off",
-                    autoSearchPaths = true,
-                    useLibraryCodeForTypes = true,
-                }
-            }
-        }
-    end,
 }
 
 lsp_installer.on_server_ready(function(server)
