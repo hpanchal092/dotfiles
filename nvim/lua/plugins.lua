@@ -11,8 +11,8 @@ return require('packer').startup(function()
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/nvim-cmp'
-    use 'hrsh7th/cmp-vsnip'
-    use 'hrsh7th/vim-vsnip'
+    use 'L3MON4D3/LuaSnip'
+    use 'saadparwaiz1/cmp_luasnip'
 
     use {
         'tpope/vim-commentary',
@@ -53,10 +53,12 @@ return require('packer').startup(function()
     use 'nvim-lua/popup.nvim'
     use 'nvim-lua/plenary.nvim'
     use 'nvim-telescope/telescope-fzy-native.nvim'
+    use 'nvim-telescope/telescope-ui-select.nvim'
     use {
         'nvim-telescope/telescope.nvim',
         config = function()
             require('telescope').load_extension('fzy_native')
+            require('telescope').load_extension('ui-select')
             vim.api.nvim_set_keymap('n', '<C-P>', '<cmd>Telescope find_files<cr>', { noremap = true })
             vim.api.nvim_set_keymap('n', '<C-F>', '<cmd>Telescope live_grep<cr>', { noremap = true })
             vim.api.nvim_set_keymap('n', '<C-B>', '<cmd>Telescope buffers<cr>', { noremap = true })

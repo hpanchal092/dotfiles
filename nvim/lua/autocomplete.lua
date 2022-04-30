@@ -1,38 +1,44 @@
 -- autocomplete
 local cmp = require('cmp')
+local luasnip = require('luasnip')
 
 cmp.setup({
     snippet = {
         expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body)
+            require('luasnip').lsp_expand(args.body)
         end,
     },
 
     mapping = {
-        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+        ['<C-SPACE>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+        ['<C-Y>'] = cmp.mapping.confirm({ select = true }),
 
-        ["<Tab>"] = function(fallback)
+        ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
+            elseif luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
             else
                 fallback()
             end
-        end,
+        end, { "i", "s" }),
 
-        ["<S-Tab>"] = function(fallback)
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+                luasnip.jump(-1)
             else
                 fallback()
             end
-        end
+        end, { "i", "s" }),
     },
 
     sources = {
         { name = "nvim_lua" },
         { name = "nvim_lsp" },
         { name = "path" },
-        { name = "vsnip" },
+        { name = "luasnip" },
         { name = "buffer", keyword_length = 5 },
     },
 
@@ -43,15 +49,13 @@ cmp.setup({
                 nvim_lsp = "[LSP]",
                 nvim_lua = "[API]",
                 path = "[PATH]",
-                vsnip = "[SNIP]",
+                luasnip = "[SNIP]",
             })[entry.source.name]
             return vim_item
         end,
     },
 
     experimental = {
-        native_menu = false,
         ghost_text = true
     },
 })
-
