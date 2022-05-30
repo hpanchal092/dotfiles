@@ -20,21 +20,34 @@ vim.o.signcolumn = 'number'
 vim.o.mouse = 'a'
 vim.o.clipboard = 'unnamedplus'
 vim.o.confirm = true
+vim.o.colorcolumn = '80';
 
 -- navigate splits
-vim.api.nvim_set_keymap('n', '<C-L>', '<C-W><C-L>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-H>', '<C-W><C-H>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-K>', '<C-W><C-K>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-J>', '<C-W><C-J>', { noremap = true })
+vim.keymap.set('n', '<C-L>', '<C-W><C-L>', { silent = true })
+vim.keymap.set('n', '<C-H>', '<C-W><C-H>', { silent = true })
+vim.keymap.set('n', '<C-K>', '<C-W><C-K>', { silent = true })
+vim.keymap.set('n', '<C-J>', '<C-W><C-J>', { silent = true })
 
 -- highlight briefly on yank
 local group = vim.api.nvim_create_augroup("highlight_yank", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
-    callback = function ()
-        vim.highlight.on_yank{ higroup="Visual", timeout=100 }
+    callback = function()
+        vim.highlight.on_yank { higroup = "Visual", timeout = 100 }
     end;
     group = group,
 })
+
+-- toggle diagnostics
+local diagnostics_active = true
+local toggle_diagnostics = function()
+    diagnostics_active = not diagnostics_active
+    if diagnostics_active then
+        vim.diagnostic.show()
+    else
+        vim.diagnostic.hide()
+    end
+end
+vim.keymap.set('n', '<leader>d', toggle_diagnostics)
 
 -- replace vim.ui.input
 local function wininput(opts, on_confirm, win_opts)
@@ -83,7 +96,7 @@ local function wininput(opts, on_confirm, win_opts)
     -- adjust window width so that there is always space
     -- for prompt + default text plus a little bit
     win_opts.width = #default_text + #prompt + 5 < win_opts.width
-            and win_opts.width
+        and win_opts.width
         or #default_text + #prompt + 5
 
     -- open the floating window pointing to our buffer and show the prompt
