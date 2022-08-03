@@ -1,26 +1,13 @@
 return require('packer').startup(function()
-    use 'wbthomason/packer.nvim'
-
-    -- see config at lsp.lua
-    use 'neovim/nvim-lspconfig'
-    use 'williamboman/nvim-lsp-installer'
-
-    -- see config at autocomplete.lua
-    use 'hrsh7th/cmp-nvim-lua'
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-path'
-    use 'hrsh7th/nvim-cmp'
-    use 'L3MON4D3/LuaSnip'
-    use 'saadparwaiz1/cmp_luasnip'
-
     use {
-        'tpope/vim-commentary',
-        config = function()
-            vim.api.nvim_set_keymap('n', '<C-_>', 'gcc', {})
-            vim.api.nvim_set_keymap('v', '<C-_>', 'gc', {})
+        'lewis6991/impatient.nvim',
+        config = function ()
+            require('impatient')
         end
     }
+    use 'wbthomason/packer.nvim'
+
+    use 'tpope/vim-commentary'
 
     use {
         'windwp/nvim-autopairs',
@@ -38,6 +25,13 @@ return require('packer').startup(function()
     }
 
     use {
+        "kylechui/nvim-surround",
+        config = function()
+            require("nvim-surround").setup()
+        end
+    }
+
+    use {
         'nvim-lualine/lualine.nvim',
         config = function()
             require('lualine').setup {
@@ -50,18 +44,30 @@ return require('packer').startup(function()
         end
     }
 
+    -- see config at lsp.lua
+    use 'neovim/nvim-lspconfig'
+    use 'williamboman/nvim-lsp-installer'
+
+    -- see config at autocomplete.lua
+    use 'hrsh7th/cmp-nvim-lua'
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/nvim-cmp'
+    use 'L3MON4D3/LuaSnip'
+    use 'saadparwaiz1/cmp_luasnip'
+
     use 'nvim-lua/popup.nvim'
     use 'nvim-lua/plenary.nvim'
-    use 'nvim-telescope/telescope-fzy-native.nvim'
-    use 'nvim-telescope/telescope-ui-select.nvim'
+
     use {
-        'nvim-telescope/telescope.nvim',
+        'ibhagwan/fzf-lua',
         config = function()
-            require('telescope').load_extension('fzy_native')
-            require('telescope').load_extension('ui-select')
-            vim.api.nvim_set_keymap('n', '<C-P>', '<cmd>Telescope find_files<cr>', { noremap = true })
-            vim.api.nvim_set_keymap('n', '<C-F>', '<cmd>Telescope live_grep<cr>', { noremap = true })
-            vim.api.nvim_set_keymap('n', '<C-B>', '<cmd>Telescope buffers<cr>', { noremap = true })
+            vim.keymap.set('n', '<C-J>', '<C-W><C-J>', { silent = true })
+            vim.keymap.set('n', '<C-P>', '<cmd>FzfLua files<CR>')
+            vim.keymap.set('n', '<C-F>', '<cmd>FzfLua live_grep<CR>')
+            vim.keymap.set('n', '<C-B>', '<cmd>FzfLua buffers<CR>')
+            require('fzf-lua').register_ui_select()
         end
     }
 
@@ -83,4 +89,14 @@ return require('packer').startup(function()
             }
         end
     }
+    use {
+        'glacambre/firenvim',
+        run = function() vim.fn['firenvim#install'](0) end,
+        config = function()
+            local fc = {}
+            fc['.*'] = { selector = 'textarea', priority = 1, takeover = 'never' }
+            vim.g.firenvim_config = { localSettings = fc }
+        end
+    }
+    use 'andweeb/presence.nvim'
 end)

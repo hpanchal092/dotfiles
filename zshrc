@@ -23,6 +23,7 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 # aliases
 alias v='nvim'
 alias ls='ls -G'
+alias g='git'
 
 # vi mode
 bindkey -v
@@ -61,9 +62,13 @@ TRAPINT() {
 
 PROMPT='$THEME_VI_MODE_SYMBOL %{$fg[green]%}%n@%m%{$reset_color%}:%{$fg[blue]%}%~%{$reset_color%}$ '
 
-# Add openjdk to the path variable
+# Path stuff
+## Add openjdk to the path variable
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
-
+## set GOPATH
+export GOPATH="$HOME/coding/go"
+## add go bin folder to path
+export PATH="$HOME/coding/go/bin:$PATH"
 
 # Load zsh-autosuggestions
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh

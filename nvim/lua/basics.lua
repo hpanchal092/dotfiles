@@ -8,7 +8,7 @@ vim.o.incsearch = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.ignorecase = true
-vim.o.hlsearch = true
+vim.o.hlsearch = false
 vim.o.swapfile = false
 vim.o.splitbelow = true
 vim.o.splitright = true
@@ -42,9 +42,9 @@ local diagnostics_active = true
 local toggle_diagnostics = function()
     diagnostics_active = not diagnostics_active
     if diagnostics_active then
-        vim.diagnostic.show()
+        vim.diagnostic.disable()
     else
-        vim.diagnostic.hide()
+        vim.diagnostic.enable()
     end
 end
 vim.keymap.set('n', '<leader>d', toggle_diagnostics)
