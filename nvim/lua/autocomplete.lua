@@ -37,6 +37,7 @@ cmp.setup({
     },
 
     sources = {
+        -- { name = 'nvim_lsp_signature_help'},
         { name = "nvim_lua" },
         { name = "nvim_lsp" },
         { name = "path" },
@@ -52,6 +53,7 @@ cmp.setup({
                 nvim_lua = "[API]",
                 path = "[PATH]",
                 luasnip = "[SNIP]",
+                -- nvim_lsp_signature_help = "",
             })[entry.source.name]
             return vim_item
         end,
