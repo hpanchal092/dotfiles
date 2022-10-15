@@ -29,7 +29,8 @@ return require('packer').startup(function()
 
     -- see config at lsp.lua
     use 'neovim/nvim-lspconfig'
-    use 'williamboman/nvim-lsp-installer'
+    use 'williamboman/mason.nvim'
+    use 'williamboman/mason-lspconfig.nvim'
 
     -- see config at autocomplete.lua
     use 'hrsh7th/cmp-nvim-lua'

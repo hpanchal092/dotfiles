@@ -1,15 +1,7 @@
 -- language server installer
-local lsp_installer = require("nvim-lsp-installer")
+require("mason").setup()
 
-lsp_installer.settings({
-    ui = {
-        icons = {
-            server_installed = "✓",
-            server_pending = "➜",
-            server_uninstalled = "✗"
-        }
-    }
-})
+require("mason-lspconfig").setup()
 
 -- keybindings
 local function on_attach(_, bufnr)
@@ -28,22 +20,16 @@ local function on_attach(_, bufnr)
     buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 end
 
-local enhance_server_opts = {
-    ["eslintls"] = function(opts)
-        opts.settings = {
-            format = {
-                enable = true,
-            },
-        }
-    end,
-}
-
-lsp_installer.on_server_ready(function(server)
-    local opts = { on_attach = on_attach }
-
-    if enhance_server_opts[server.name] then
-        enhance_server_opts[server.name](opts)
-    end
-
-    server:setup(opts)
-end)
+require('lspconfig')['clangd'].setup({ on_attach = on_attach })
+require('lspconfig')['cssls'].setup({ on_attach = on_attach })
+require('lspconfig')['eslint'].setup({ on_attach = on_attach })
+require('lspconfig')['gopls'].setup({ on_attach = on_attach })
+require('lspconfig')['html'].setup({ on_attach = on_attach })
+require('lspconfig')['jdtls'].setup({ on_attach = on_attach })
+require('lspconfig')['jsonls'].setup({ on_attach = on_attach })
+require('lspconfig')['pylsp'].setup({ on_attach = on_attach })
+require('lspconfig')['rust_analyzer'].setup({ on_attach = on_attach })
+require('lspconfig')['sumneko_lua'].setup({ on_attach = on_attach })
+require('lspconfig')['texlab'].setup({ on_attach = on_attach })
+require('lspconfig')['tsserver'].setup({ on_attach = on_attach })
+require('lspconfig')['vimls'].setup({ on_attach = on_attach })

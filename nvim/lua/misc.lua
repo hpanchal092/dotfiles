@@ -86,7 +86,8 @@ local function wininput(opts, on_confirm, win_opts)
     -- set the default text (needs to be deferred after the prompt is drawn)
     vim.defer_fn(function()
         vim.api.nvim_buf_set_text(buf, 0, #prompt, 0, #prompt, { default_text })
-        vim.cmd("startinsert!") -- bang: go to end of line
+        vim.cmd("stopinsert") -- vim.api.nvim_input("<ESC>")
+        vim.api.nvim_win_set_cursor(0, { 1, #prompt + 1 })
     end, 15)
 end
 
@@ -94,5 +95,5 @@ end
 vim.ui.input = function(opts, on_confirm)
     -- intercept opts and on_confirm,
     -- check buffer options, filetype, etc and set window options accordingly.
-    wininput(opts, on_confirm, { border = "rounded", relative = "cursor", row = 1, col = 0, width = 0 })
+    wininput(opts, on_confirm, { border = "rounded", relative = "cursor", row = 1, col = 1, width = 0 })
 end
