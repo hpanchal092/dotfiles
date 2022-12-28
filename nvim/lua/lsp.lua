@@ -2,6 +2,30 @@
 require("mason").setup()
 
 require("mason-lspconfig").setup()
+local servers = {
+    clangd = {},
+    gopls = {},
+    pylsp = {},
+    rust_analyzer = {},
+    tsserver = {},
+    jdtls = {},
+
+    sumneko_lua = {
+        Lua = {
+            workspace = { checkThirdParty = false },
+            telemetry = { enable = false },
+            diagnostics = {
+                globals = { 'vim' },
+            }
+        },
+    },
+}
+
+local mason_lspconfig = require("mason-lspconfig")
+
+mason_lspconfig.setup({
+    ensure_installed = vim.tbl_keys(servers),
+})
 
 -- keybindings
 local function on_attach(_, bufnr)
@@ -33,3 +57,18 @@ require('lspconfig')['sumneko_lua'].setup({ on_attach = on_attach })
 require('lspconfig')['texlab'].setup({ on_attach = on_attach })
 require('lspconfig')['tsserver'].setup({ on_attach = on_attach })
 require('lspconfig')['vimls'].setup({ on_attach = on_attach })
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
+mason_lspconfig.setup_handlers {
+    function(server_name)
+        require('lspconfig')[server_name].setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
+            settings = servers[server_name],
+        }
+    end,
+    -- ["rust_analyzer"] = function ()
+    --     require("rust-tools").setup {}
+    -- end
+}
