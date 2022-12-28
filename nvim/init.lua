@@ -72,7 +72,23 @@ require("lazy").setup({
         build = function() vim.fn['firenvim#install'](0) end,
         config = function() require('plugs.firenvim') end
     },
-    'andweeb/presence.nvim',
+    { 'andweeb/presence.nvim', event = "VeryLazy" },
+}, {
+    ui = {
+        icons = {
+            cmd = "⌘",
+            config = "🛠",
+            event = "📅",
+            ft = "📂",
+            init = "⚙",
+            keys = "🗝",
+            plugin = "🔌",
+            runtime = "💻",
+            source = "📄",
+            start = "🚀",
+            task = "📌",
+        },
+    },
 })
 
 require('basics')
