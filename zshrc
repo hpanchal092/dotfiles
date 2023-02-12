@@ -1,5 +1,7 @@
 autoload -U colors && colors
 setopt PROMPT_SUBST
+autoload -z edit-command-line
+zle -N edit-command-line
 
 # History
 HISTSIZE=10000
@@ -19,6 +21,8 @@ bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
+# edit current line in neovim
+bindkey -M vicmd v edit-command-line
 
 # aliases
 alias v='nvim'
@@ -63,6 +67,8 @@ TRAPINT() {
 PROMPT='$THEME_VI_MODE_SYMBOL %{$fg[green]%}%n@%m%{$reset_color%}:%{$fg[blue]%}%~%{$reset_color%}$ '
 
 # random variables and stuff
+## the best editor
+export EDITOR="nvim"
 ## Add openjdk to the path variable
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 ## set GOPATH

@@ -1,3 +1,6 @@
+require('basics')
+require('misc')
+
 -- install lazy if its not installed already
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -12,6 +15,25 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.runtimepath:prepend(lazypath)
 
+local lazy_opts = {
+    ui = {
+        icons = {
+            cmd = "⌘",
+            config = "🛠",
+            event = "📅",
+            ft = "📂",
+            init = "⚙",
+            keys = "🗝",
+            plugin = "🔌",
+            runtime = "💻",
+            source = "📄",
+            start = "🚀",
+            task = "📌",
+        },
+    },
+}
+
+-- plugins
 require("lazy").setup({
     'nvim-lua/plenary.nvim',
 
@@ -25,8 +47,14 @@ require("lazy").setup({
 
     -- making the editor useable
     { 'numToStr/Comment.nvim', config = true },
-    { 'windwp/nvim-autopairs', config = true },
     { 'nvim-lualine/lualine.nvim', config = function() require('plugs.lualine') end },
+    { 'noib3/nvim-cokeline', config = function() require('plugs.cokeline') end },
+    { 'windwp/nvim-autopairs', config = true },
+    'windwp/nvim-ts-autotag',
+    'RRethy/nvim-treesitter-endwise',
+
+    -- git
+    { 'lewis6991/gitsigns.nvim', config = true },
 
     -- fuzzy finder
     { 'ibhagwan/fzf-lua', config = function() require('plugs.fzf-lua') end },
@@ -73,23 +101,5 @@ require("lazy").setup({
         config = function() require('plugs.firenvim') end
     },
     { 'andweeb/presence.nvim', event = "VeryLazy" },
-}, {
-    ui = {
-        icons = {
-            cmd = "⌘",
-            config = "🛠",
-            event = "📅",
-            ft = "📂",
-            init = "⚙",
-            keys = "🗝",
-            plugin = "🔌",
-            runtime = "💻",
-            source = "📄",
-            start = "🚀",
-            task = "📌",
-        },
-    },
-})
-
-require('basics')
-require('misc')
+    'ThePrimeagen/vim-be-good',
+}, lazy_opts)

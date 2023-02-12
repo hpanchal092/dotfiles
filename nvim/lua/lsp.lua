@@ -10,7 +10,7 @@ local servers = {
     tsserver = {},
     jdtls = {},
 
-    sumneko_lua = {
+    lua_ls = {
         Lua = {
             workspace = { checkThirdParty = false },
             telemetry = { enable = false },
@@ -55,7 +55,4 @@ mason_lspconfig.setup_handlers {
             settings = servers[server_name],
         }
     end,
-    -- ["rust_analyzer"] = function ()
-    --     require("rust-tools").setup {}
-    -- end
 }

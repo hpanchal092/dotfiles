@@ -3,7 +3,7 @@ local group = vim.api.nvim_create_augroup("my_group", { clear = true })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
     callback = function()
-        vim.highlight.on_yank({ higroup = "Visual", timeout = 100 })
+        vim.highlight.on_yank({ higroup = "Visual", timeout = 100, on_visual = false })
     end;
     group = group,
 })
@@ -24,7 +24,7 @@ local toggle_diagnostics = function()
         vim.diagnostic.enable()
     end
 end
-vim.keymap.set('n', '<leader>d', toggle_diagnostics)
+vim.keymap.set('n', '<leader>tt', toggle_diagnostics)
 
 local function wininput(opts, on_confirm, win_opts)
     -- create a "prompt" buffer that will be deleted once focus is lost

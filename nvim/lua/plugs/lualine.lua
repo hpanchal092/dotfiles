@@ -6,16 +6,4 @@ require('lualine').setup {
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
     },
-    tabline = {
-        lualine_a = {
-            {
-                'buffers',
-                symbols = {
-                    modified = ' [+]',
-                    alternate_file = '',
-                    directory = '',
-                },
-            }
-        },
-    },
 }

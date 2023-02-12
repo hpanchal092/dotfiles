@@ -16,7 +16,7 @@ vim.o.scrolloff = 5
 vim.o.errorbells = false
 vim.o.termguicolors = true
 vim.o.showmode = false
-vim.o.signcolumn = 'number'
+vim.o.signcolumn = 'yes:1'
 vim.o.mouse = 'a'
 vim.o.clipboard = 'unnamedplus'
 vim.o.confirm = true
@@ -27,8 +27,3 @@ vim.keymap.set('n', '<C-L>', '<C-W><C-L>', { silent = true })
 vim.keymap.set('n', '<C-H>', '<C-W><C-H>', { silent = true })
 vim.keymap.set('n', '<C-K>', '<C-W><C-K>', { silent = true })
 vim.keymap.set('n', '<C-J>', '<C-W><C-J>', { silent = true })
-
--- cycle through buffers
-vim.keymap.set('n', '<leader>n', '<cmd>bn<cr>', { silent = true })
-vim.keymap.set('n', '<leader>p', '<cmd>bp<cr>', { silent = true })
-vim.keymap.set('n', '<leader>q', '<cmd>bd<cr>', { silent = true })
