@@ -26,20 +26,20 @@ cmp.setup({
     mapping = {
         ['<C-SPACE>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
         ['<C-Y>'] = cmp.mapping.confirm({ select = true }),
-        ["<Tab>"] = function(fallback)
+        ['<Tab>'] = function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
             else
                 fallback()
             end
         end,
-        ["<S-Tab>"] = function(fallback)
+        ['<S-Tab>'] = function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
             else
                 fallback()
             end
-        end,
+        end
     },
 
     sources = {
