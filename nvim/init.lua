@@ -61,7 +61,8 @@ require("lazy").setup({
 
     -- lsp stuff
     {
-        'neovim/nvim-lspconfig', dependencies = {
+        'neovim/nvim-lspconfig',
+        dependencies = {
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
         },
@@ -80,6 +81,7 @@ require("lazy").setup({
             'hrsh7th/nvim-cmp',
             'L3MON4D3/LuaSnip',
             'saadparwaiz1/cmp_luasnip',
+            'rafamadriz/friendly-snippets',
         },
         config = function() require('autocomplete') end
     },
@@ -100,6 +102,6 @@ require("lazy").setup({
         build = function() vim.fn['firenvim#install'](0) end,
         config = function() require('plugs.firenvim') end
     },
-    { 'andweeb/presence.nvim', event = "VeryLazy" },
-    'ThePrimeagen/vim-be-good',
+    { 'andweeb/presence.nvim', event = 'VeryLazy' },
+    { 'ThePrimeagen/vim-be-good', event = 'VeryLazy' },
 }, lazy_opts)

@@ -1,12 +1,7 @@
 require('fzf-lua').setup({
     winopts = {
-        border = false,
         hl = {
-            normal = 'NormalFloat',
-            border = 'FloatBoarder',
-            help_normal = 'NormalFloat',
-            help_border = 'FloatBoarder',
-            title = 'FloatTitle'
+            border = 'FloatTitle',
         },
     },
     keymap = {

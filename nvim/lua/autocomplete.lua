@@ -1,6 +1,18 @@
 -- autocomplete
 local cmp = require('cmp')
 local luasnip = require('luasnip')
+require("luasnip.loaders.from_vscode").lazy_load()
+
+vim.keymap.set({ "i", "s" }, "<C-j>", function()
+    if luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+    end
+end, { silent = true })
+vim.keymap.set({ "i", "s" }, "<C-k>", function()
+    if luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+    end
+end, { silent = true })
 
 cmp.setup({
     preselect = cmp.PreselectMode.None,
@@ -14,30 +26,23 @@ cmp.setup({
     mapping = {
         ['<C-SPACE>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
         ['<C-Y>'] = cmp.mapping.confirm({ select = true }),
-
-        ["<Tab>"] = cmp.mapping(function(fallback)
+        ["<Tab>"] = function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
-                luasnip.expand_or_jump()
             else
                 fallback()
             end
-        end, { "i", "s" }),
-
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
+        end,
+        ["<S-Tab>"] = function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-                luasnip.jump(-1)
             else
                 fallback()
             end
-        end, { "i", "s" }),
+        end,
     },
 
     sources = {
-        -- { name = 'nvim_lsp_signature_help'},
         { name = "nvim_lua" },
         { name = "nvim_lsp" },
         { name = "path" },
@@ -53,7 +58,6 @@ cmp.setup({
                 nvim_lua = "[API]",
                 path = "[PATH]",
                 luasnip = "[SNIP]",
-                -- nvim_lsp_signature_help = "",
             })[entry.source.name]
             return vim_item
         end,
