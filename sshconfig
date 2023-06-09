@@ -10,3 +10,8 @@ Host enoch
     HostName 45.63.50.198
     User developer
     IdentityFile ~/.ssh/dev_file.pem
+
+Host harshserver
+    HostName 20.150.142.98
+    User harsh
+    IdentityFile ~/.ssh/harshserver_key.pem

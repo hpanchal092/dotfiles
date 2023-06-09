@@ -3,13 +3,11 @@ require("mason").setup()
 
 require("mason-lspconfig").setup()
 local servers = {
-    clangd = {},
-    gopls = {},
-    pylsp = {},
-    rust_analyzer = {},
-    tsserver = {},
-    jdtls = {},
-
+    jdtls = {
+        java = {
+            { signatureHelp = { enabled = true }, contentProvider = { preferred = 'fernflower' } }
+        },
+    },
     lua_ls = {
         Lua = {
             workspace = { checkThirdParty = false },

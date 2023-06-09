@@ -10,7 +10,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 vim.api.nvim_create_autocmd("BufWritePost", {
     pattern = "*.tex",
-    command = "silent! !pdflatex %",
+    command = "silent! !lualatex %",
     group = group,
 })
 
@@ -62,11 +62,9 @@ local function wininput(opts, on_confirm, win_opts)
     vim.keymap.set({ "i", "n" }, "<CR>", function()
         local lines = vim.api.nvim_buf_get_lines(buf, 0, 1, false)
         on_confirm(lines[1])
-        vim.api.nvim_input("<Esc>:close!<CR>:stopinsert<CR>")
-    end, {
-        silent = true,
-        buffer = buf,
-    })
+        vim.api.nvim_input("<Esc>:close!<CR>:stopinsert<CR>l")
+        vim.api.nvim_buf_delete(buf, { force = true })
+    end, { silent = true, buffer = buf })
 
     vim.keymap.set("n", "<esc>", function()
         return vim.fn.mode() == "n" and "ZQ" or "<esc>"
