@@ -26,7 +26,7 @@ bindkey -M vicmd v edit-command-line
 
 # aliases
 alias v='nvim'
-alias ls='ls -G'
+alias ls='ls --color'
 alias g='git'
 
 # vi mode
@@ -79,6 +79,6 @@ export PATH="$HOME/coding/go/bin:$PATH"
 export FZF_DEFAULT_OPTS="--bind=tab:down,btab:up"
 
 # Load zsh-autosuggestions
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Load zsh-syntax-highlighting
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
