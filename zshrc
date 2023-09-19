@@ -71,6 +71,8 @@ PROMPT='$THEME_VI_MODE_SYMBOL %{$fg[green]%}%n@%m%{$reset_color%}:%{$fg[blue]%}%
 export EDITOR="nvim"
 ## Add openjdk to the path variable
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
+## Add local bin to the path variable
+export PATH="$HOME/.local/bin:$PATH"
 ## set GOPATH
 export GOPATH="$HOME/coding/go"
 ## add go bin folder to path

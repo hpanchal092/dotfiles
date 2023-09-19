@@ -1,4 +1,4 @@
-require('nvim-treesitter.configs').setup {
+require('nvim-treesitter.configs').setup({
     auto_install = true,
     context_commentstring = {
         enable = true
@@ -15,5 +15,4 @@ require('nvim-treesitter.configs').setup {
     endwise = {
         enable = true,
     },
-
-}
+})

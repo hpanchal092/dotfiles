@@ -50,8 +50,6 @@ require("lazy").setup({
     { 'nvim-lualine/lualine.nvim', config = function() require('plugs.lualine') end },
     { 'noib3/nvim-cokeline', config = function() require('plugs.cokeline') end },
     { 'windwp/nvim-autopairs', config = true },
-    'windwp/nvim-ts-autotag',
-    'RRethy/nvim-treesitter-endwise',
 
     -- git
     { 'lewis6991/gitsigns.nvim', config = true },
@@ -95,6 +93,9 @@ require("lazy").setup({
         priority = 1000,
     },
     'JoosepAlviste/nvim-ts-context-commentstring',
+    'windwp/nvim-ts-autotag',
+    'RRethy/nvim-treesitter-endwise',
+    'nvim-treesitter/playground',
 
     -- misc
     {

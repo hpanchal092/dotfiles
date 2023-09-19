@@ -11,7 +11,7 @@ Host enoch
     User developer
     IdentityFile ~/.ssh/dev_file.pem
 
-Host harshserver
-    HostName 20.150.142.98
-    User harsh
-    IdentityFile ~/.ssh/harshserver_key.pem
+Host harshsjsu
+    HostName 20.169.48.140
+    User harshpanchal
+    IdentityFile ~/.ssh/harshsjsu.pem
