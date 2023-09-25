@@ -1,7 +1,6 @@
 -- language server installer
 require("mason").setup()
 
-require("mason-lspconfig").setup()
 local servers = {
     jdtls = {
         java = {
@@ -11,7 +10,6 @@ local servers = {
     lua_ls = {
         Lua = {
             workspace = { checkThirdParty = false },
-            telemetry = { enable = false },
             diagnostics = {
                 globals = { 'vim' },
             }
@@ -38,7 +36,7 @@ local function on_attach(_, bufnr)
     buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
     buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
     buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-    buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.format({async = true})<CR>', opts)
+    buf_set_keymap('n', '<space>f', '<cmd>lua require("conform").format({async = true})<CR>', opts)
     buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 end
 
@@ -54,3 +52,14 @@ mason_lspconfig.setup_handlers({
         }
     end,
 })
+
+require("conform").setup({
+    formatters_by_ft = {
+        lua = { "stylua" },
+        python = { "black" },
+    },
+})
+
+require('lint').linters_by_ft = {
+    python = { 'flake8' }
+}

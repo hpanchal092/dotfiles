@@ -5,18 +5,19 @@
     editor = nvim
 
 [difftool]
-    prompt = true
+    prompt = false
 [diff]
     tool = nvimdiff
 [difftool "nvimdiff"]
     cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 
 [merge]
-    tool = nvimmerge
+    tool = nvimdiff4
+    prompt = false
 [mergetool]
     keepBackup = false
-[mergetool "nvimmerge"]
-    cmd = "nvim -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\""
+[mergetool "nvimdiff4"]
+    cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c '$wincmd J'
 
 [alias]
     s = status
@@ -26,5 +27,6 @@
     co = checkout
     df = diff
     dt = difftool
+    mt = mergetool
     hist = log --pretty=format:\"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)\" --graph --date=relative --decorate --all
     llog = log --graph --name-status --pretty=format:\"%C(red)%h %C(reset)(%cd) %C(green)%an %Creset%s %C(yellow)%d%Creset\" --date=relative

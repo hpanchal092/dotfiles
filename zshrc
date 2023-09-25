@@ -28,6 +28,7 @@ bindkey -M vicmd v edit-command-line
 alias v='nvim'
 alias ls='ls --color'
 alias g='git'
+alias lg='lazygit'
 
 # vi mode
 bindkey -v

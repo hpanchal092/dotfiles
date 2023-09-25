@@ -3,7 +3,9 @@ require('lualine').setup {
         theme = 'onedark',
         icons_enabled = false,
         globalstatus = true,
-        component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
+        component_separators = '│',
+        section_separators = '',
+        -- component_separators = { left = '', right = '' },
+        -- section_separators = { left = '', right = '' },
     },
 }
