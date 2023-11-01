@@ -23,7 +23,6 @@ vim.o.clipboard = "unnamedplus"
 vim.o.confirm = true
 vim.o.colorcolumn = "80"
 vim.o.cursorline = true
-vim.api.nvim_set_hl(0, "CursorLine", { bg = "NONE" })
 
 vim.fn.sign_define("DiagnosticSignError", { text = "", numhl = "DiagnosticSignError" })
 vim.fn.sign_define("DiagnosticSignWarn", { text = "", numhl = "DiagnosticSignWarn" })
