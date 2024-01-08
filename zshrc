@@ -29,6 +29,7 @@ alias v='nvim'
 alias ls='ls --color'
 alias g='git'
 alias lg='lazygit'
+alias f='cd $(find . -type d | fzf --border-label=" Change Directory ")'
 
 # vi mode
 bindkey -v
@@ -79,7 +80,12 @@ export GOPATH="$HOME/coding/go"
 ## add go bin folder to path
 export PATH="$HOME/coding/go/bin:$PATH"
 ## fzf stuff
-export FZF_DEFAULT_OPTS="--bind=tab:down,btab:up"
+export FZF_DEFAULT_OPTS="
+  --bind=tab:down,btab:up,ctrl-j:toggle+down,ctrl-n:toggle+up
+  --color=border:6,label:6
+  --margin=5%
+  --border
+  --reverse"
 
 # Load zsh-autosuggestions
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
