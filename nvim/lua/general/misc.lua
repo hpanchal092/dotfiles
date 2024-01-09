@@ -8,24 +8,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	group = group,
 })
 
-vim.api.nvim_create_autocmd("BufWritePost", {
-	pattern = "*.tex",
-	command = "silent! !lualatex %",
-	group = group,
-})
-
--- toggle diagnostics
-local diagnostics_active = true
-local toggle_diagnostics = function()
-	diagnostics_active = not diagnostics_active
-	if diagnostics_active then
-		vim.diagnostic.disable()
-	else
-		vim.diagnostic.enable()
-	end
-end
-vim.keymap.set("n", "<leader>tt", toggle_diagnostics)
-
+-- override vim.ui.input, mainly for lsp rename
 local function wininput(opts, on_confirm, win_opts)
 	-- create a "prompt" buffer that will be deleted once focus is lost
 	local buf = vim.api.nvim_create_buf(false, false)
@@ -82,7 +65,6 @@ local function wininput(opts, on_confirm, win_opts)
 	end, 15)
 end
 
--- override vim.ui.input ( telescope rename/create, lsp rename, etc )
 vim.ui.input = function(opts, on_confirm)
 	wininput(opts, on_confirm, { border = "rounded", relative = "cursor", row = 1, col = -1 })
 end
