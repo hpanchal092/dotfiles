@@ -32,7 +32,7 @@ return {
 			vim.keymap.set("n", "<M-m>", function()
 				require("harpoon.ui").toggle_quick_menu()
 			end, { silent = true })
-			vim.keymap.set("n", "<M-f>", function()
+			vim.keymap.set("n", "<M-h>", function()
 				require("harpoon.mark").add_file()
 				vim.cmd("redrawtabline")
 			end, { silent = true })
