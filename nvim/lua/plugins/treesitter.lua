@@ -12,10 +12,7 @@ return {
 				indent = {
 					enable = true,
 				},
-				autotag = {
-					enable = true,
-				},
-				endwise = {
+				endwise = {  -- because of nvim-treesitter-endwise
 					enable = true,
 				},
 			})
@@ -24,15 +21,5 @@ return {
 		priority = 1000,
 	},
 
-	{
-		"JoosepAlviste/nvim-ts-context-commentstring",
-
-		config = function()
-			vim.g.skip_ts_context_commentstring_module = true
-			require("ts_context_commentstring").setup()
-		end,
-	},
-
-	"windwp/nvim-ts-autotag",
 	"RRethy/nvim-treesitter-endwise",
 }

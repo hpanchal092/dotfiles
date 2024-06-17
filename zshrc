@@ -23,9 +23,9 @@ export FZF_DEFAULT_OPTS="
   --margin=5%
   --border
   --reverse"
-export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix"
+export FZF_DEFAULT_COMMAND="fd --type f  --hidden --exclude .git --ignore-file .gitignore"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type d --strip-cwd-prefix"
+export FZF_ALT_C_COMMAND="fd --type d --hidden --exclude .git"
 
 # History
 HISTSIZE=10000
@@ -48,7 +48,10 @@ source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # aliases
 alias v='nvim'
 alias ls='ls --color'
+alias ll='ls -la --color'
+alias la='ls -a --color'
 alias g='git'
+alias gd='nvim +DiffviewOpen'
 alias lg='lazygit'
 
 # Basic auto/tab complete:

@@ -25,4 +25,13 @@ return {
 			})
 		end,
 	},
+	{
+		"kosayoda/nvim-lightbulb",
+		config = {
+			action_kinds = { "quickfix" },
+			sign = { enabled = false },
+			virtual_text = { enabled = true, hl = "CursorLine" },
+			autocmd = { enabled = true, updatetime = 10 },
+		},
+	},
 }

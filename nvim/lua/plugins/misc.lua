@@ -14,4 +14,12 @@ return {
 	},
 
 	{ "ThePrimeagen/vim-be-good", event = "VeryLazy" },
+	{
+		"m4xshen/hardtime.nvim",
+		opts = {
+			restricted_keys = {
+				["<C-P>"] = {},
+			},
+		},
+	},
 }

@@ -1,7 +1,0 @@
-customCommands:
-  - key: "<c-d>"
-    command: "git difftool {{ .SelectedPath }}"
-    context: "files"
-    loadingText: "opening git difftool"
-    description: "Open difftool"
-    subprocess: true

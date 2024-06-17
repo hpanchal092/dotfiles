@@ -1,5 +1,6 @@
 -- options
 vim.g.mapleader = " "
+vim.g.skip_ts_context_commentstring_module = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.wrap = false

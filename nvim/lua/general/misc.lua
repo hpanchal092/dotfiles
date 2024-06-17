@@ -36,6 +36,7 @@ local function wininput(opts, on_confirm, win_opts)
 	win_opts = vim.tbl_deep_extend("force", default_win_config, win_opts)
 
 	-- open the floating window pointing to our buffer and show the prompt
+	vim.cmd("norm wb")
 	local win = vim.api.nvim_open_win(buf, true, win_opts)
 	vim.api.nvim_win_set_option(win, "winhighlight", "NormalFloat:Normal,FloatBorder:FloatTitle")
 
